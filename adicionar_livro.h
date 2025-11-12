@@ -5,17 +5,18 @@
 #include "livro.h"
 
 
-void adicionar_livro(livro livros[], int N, int atual) {
+void adicionar_livro(livro *p, int atual) {
 
     printf("Informe o título do livro: \n");
-    scanf("%s", livros[atual].titulo);
+    scanf("%s", p[atual].titulo);
 
     printf("Informe o nome do Autor: \n");
-    scanf("%s", livros[atual].autor);
+    scanf("%s", p[atual].autor);
 
     printf("Informe o ano de publicação: \n");
-    scanf("%d", &livros[atual].publicacao);
+    scanf("%d", &p[atual].publicacao);
 
+    p[atual].disponivel = true;
 
 }
 

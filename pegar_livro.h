@@ -4,22 +4,27 @@
 #include <stdio.h>
 #include "livro.h"
 
-int pegar_livro(livro livros[], int N, char titulo[]) {
+int pegar_livro(livro *p, int atual, char titulo[]) {
 
     int i = 0;
-    while(strcmp(livros[i].titulo, titulo) != 0){
+    while(strcmp(p[i].titulo, titulo) != 0){
         i++;
         
-        if(i >= N) {
+        if(i > atual) {
             printf("Livro não encontrado\n");
             return 0;
         }
         
     }
 
-    livros[i].disponivel = false;
+    if(p[i].disponivel == false){
+        printf("Livro indisponível!\n");
+        return 1;
+    }
+
+    p[i].disponivel = false;
+    printf("Livro %s reservado!\n", p[i].titulo);
     
-    printf("Livro %s pego!\n", livros[i].titulo);
     return 1;
 }
 
