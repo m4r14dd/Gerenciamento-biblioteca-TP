@@ -2,9 +2,9 @@
 #define DEVOLVER_LIVRO_H
 
 #include <stdio.h>
-#include "livro.h"
+#include "../registros/livro.h"
 
-int devolver_livro(livro *p, int atual, char *titulo[]) {
+int devolver_livro(livro *p, int atual, char titulo[]) {
 
     int i = 0;
     while(strcmp(p[i].titulo, titulo) != 0){

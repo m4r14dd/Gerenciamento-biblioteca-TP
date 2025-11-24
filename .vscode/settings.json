@@ -15,6 +15,9 @@
         "livro.h": "c",
         "stdbool.h": "c",
         "adicionar_livro.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "buscar_livro.h": "c",
+        "listar_livros.h": "c",
+        "menu.h": "c"
     }
 }

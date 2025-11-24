@@ -1,38 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "livro.h"
-#include "menu.h"
-#include "adicionar_livro.h"
-#include "buscar_livro.h" 
-#include "listar_livros.h"
-#include "pegar_livro.h"
-#include "devolver_livro.h"
+
+//importa todas as structs que o programa vai usar
+#include "./registros/livro.h"
+#include "./registros/usuario.h" 
+#include "./registros/emprestimo.h"
+#include "./funcoes/menu.h"
+
+#include "gerenciamento_livros.c"s
 
 
 int main(){
 
-    int N = 1;
+    //incializa o vetor dinamico de livros (calloc é pra inicializar o livro com todas as variaveis zeradas)
     livro *p;
-    p = (livro *)malloc(N*sizeof(livro));
+    p = (livro *)calloc(1,sizeof(livro));
     
-    int opcao;
+
+    int opcao = 0;
+    int total_livros = 0;
     
-    print_menu();
+    //printa o menu principal
+    menu_principal();
     
-    
-    int atual = 0;
     while(scanf("%d", &opcao)) {
-        char titulo_busca[100];
         
         switch (opcao) {
             case 1:
-                adicionar_livro(p, atual);
-                
-                atual++; N++;
-                p = (livro *)realloc(p, N*sizeof(livro));
-            break;
+                //printa o menu de gerenciamento de livros
+                menu_de_livros();
 
+                //chama a função que vai ler as entradas no menu de livros
+                total_livros = gerenciamento_livros(p, total_livros);
+            
+                break;
+            /*
             case 2:
+                menu_de_usuarios();
+
                 printf("Digite o título do livro: \n");
                 scanf(" %s", titulo_busca);
 
@@ -40,10 +45,11 @@ int main(){
             break;
 
             case 3:
-                listar_livros(p, atual);
+                menu_de_emprestimos();
             break;
 
             case 4:
+                menu_de_relatorios();
                 printf("Digite o título do livro: \n");
                 scanf(" %s", titulo_busca);
 
@@ -56,14 +62,17 @@ int main(){
 
                 devolver_livro(p, atual, titulo_busca);
             break;
+                */
+            case 0:
+                //libera a memória alocada e finaliza o programa
+                free(p);
+                return 0;
 
+            break;
         }
 
-        print_menu();
+        menu_principal();
 
     }
-
-    free(p);
-    return 0;
 
 }
