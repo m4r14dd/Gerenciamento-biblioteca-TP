@@ -2,6 +2,8 @@
 #define PEGAR_LIVRO_H
 
 #include <stdio.h>
+#include <string.h>
+
 #include "../registros/livro.h"
 
 int pegar_livro(livro *p, int atual, char titulo[]) {

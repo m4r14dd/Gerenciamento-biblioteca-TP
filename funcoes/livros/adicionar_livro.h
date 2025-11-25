@@ -1,13 +1,11 @@
-//eu ainda não pesquisei pra que usar ifndef, define e endif. 
-//mas tem que usar pq se não dá peteco
-//eu acho que tem a ver com importar a mesma biblioteca mais de uma vez, algo assim
 #ifndef ADICIONAR_LIVRO_H
 #define ADICIONAR_LIVRO_H
 
 #include <stdio.h>
+#include <string.h>
 
 //importa a struct livro da pasta /registros
-#include "../registros/livro.h"
+#include "../../registros/livro.h"
 
 
 void adicionar_livro(livro *p, int total_livros) {

@@ -7,7 +7,7 @@
 #include "./registros/emprestimo.h"
 #include "./funcoes/menu.h"
 
-#include "gerenciamento_livros.c"s
+#include "gerenciamento_livros.c"
 
 
 int main(){
@@ -33,17 +33,17 @@ int main(){
                 //chama a função que vai ler as entradas no menu de livros
                 total_livros = gerenciamento_livros(p, total_livros);
             
-                break;
-            /*
-            case 2:
-                menu_de_usuarios();
-
-                printf("Digite o título do livro: \n");
-                scanf(" %s", titulo_busca);
-
-                buscar_livro(p,atual, titulo_busca);
             break;
+            
+            case 2:
+                //printa o menu de gerenciamento de usuarios
+                menu_de_usuarios();
+                
+                //chama a funcao que ai ler as entradas no menu de usuarios
 
+            break;
+                
+            /*
             case 3:
                 menu_de_emprestimos();
             break;

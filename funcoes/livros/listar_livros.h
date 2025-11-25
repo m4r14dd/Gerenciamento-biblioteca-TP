@@ -1,10 +1,7 @@
-//eu ainda não pesquisei pra que usar ifndef, define e endif. 
-//mas tem que usar pq se não dá peteco
-//eu acho que tem a ver com importar a mesma biblioteca mais de uma vez, algo assim
 #ifndef LISTAR_LIVROS_H
 #define LISTAR_LIVROS_H
 
-#include "../registros/livro.h"
+#include "../../registros/livro.h"
 
 
 void listar_livros(livro *p, int total_livros) {
