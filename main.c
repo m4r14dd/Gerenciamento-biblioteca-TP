@@ -60,16 +60,10 @@ int main(){
             
             break;
            
-            
-            /*
             case 4:
                 menu_de_relatorios();
-                printf("Digite o título do livro: \n");
-                scanf(" %s", titulo_busca);
-
-                pegar_livro(p, atual, titulo_busca);
-            break;
-            */
+                gerenciamento_relatorios();
+            break; 
 
             case 0:
                 //libera a memória alocada e finaliza o programa
