@@ -3,7 +3,7 @@
 //eu acho que tem a ver com importar a mesma biblioteca mais de uma vez, algo assim
 #ifndef LISTAR_LIVROS_H
 #define LISTAR_LIVROS_H
-
+#include <stdio.h>
 #include "../registros/livro.h"
 
 

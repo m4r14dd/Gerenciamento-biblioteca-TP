@@ -7,7 +7,8 @@
 #include "./registros/emprestimo.h"
 #include "./funcoes/menu.h"
 
-#include "gerenciamento_livros.c"s
+#include "gerenciamento_livros.c"
+#include "gerenciamento_usuarios.c"
 
 
 int main(){
@@ -15,10 +16,12 @@ int main(){
     //incializa o vetor dinamico de livros (calloc é pra inicializar o livro com todas as variaveis zeradas)
     livro *p;
     p = (livro *)calloc(1,sizeof(livro));
-    
+    usuario *u;
+    u = (usuario *)calloc(1,sizeof(usuario));
 
     int opcao = 0;
     int total_livros = 0;
+    int total_usuarios = 0;
     
     //printa o menu principal
     menu_principal();
@@ -33,16 +36,15 @@ int main(){
                 //chama a função que vai ler as entradas no menu de livros
                 total_livros = gerenciamento_livros(p, total_livros);
             
-                break;
-            /*
+            break;
+
             case 2:
                 menu_de_usuarios();
+                
+                total_usuarios = gerenciamento_usuarios(u,total_usuarios);
 
-                printf("Digite o título do livro: \n");
-                scanf(" %s", titulo_busca);
-
-                buscar_livro(p,atual, titulo_busca);
             break;
+                /*
 
             case 3:
                 menu_de_emprestimos();
