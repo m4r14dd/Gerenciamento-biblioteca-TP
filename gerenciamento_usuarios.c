@@ -1,11 +1,11 @@
 #include "./registros/usuario.h"
 
 
-#include "./funcoes/cadastrar_usuario.h"
-#include "./funcoes/buscar_usuario.h"
+#include "./funcoes/usuarios/cadastrar_usuario.h"
+#include "./funcoes/usuarios/buscar_usuario.h"
+#include "./funcoes/usuarios/listar_usuarios.h"
+#include "./funcoes/usuarios/remover_usuario.h"
 #include "./funcoes/menu.h"
-#include "./funcoes/listar_usuarios.h"
-#include "./funcoes/remover_usuario.h"
 
 
 #include <stdlib.h>

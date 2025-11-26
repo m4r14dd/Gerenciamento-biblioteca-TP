@@ -21,15 +21,14 @@ int main(){
 
     emprestimo *emprestimos;
     emprestimos = (emprestimo *)calloc(1,sizeof(livro));
+
     int total_emprestimos = 0;
     
     usuario *u;
     u = (usuario *)calloc(1,sizeof(usuario));
+    int total_usuarios = 0;
 
     int opcao = 0;
-
-
-    int total_usuarios = 0;
     
     //printa o menu principal
     menu_principal();
