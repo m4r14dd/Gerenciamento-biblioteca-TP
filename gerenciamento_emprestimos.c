@@ -1,11 +1,14 @@
-//importa a struct emprestimo da pasta /registros
+//importa as structs da pasta /registros
 #include "./registros/emprestimo.h"
 #include "./registros/usuario.h"
 #include "./registros/livro.h"
 
+
 #include "./funcoes/menu.h"
 
+
 #include <stdlib.h>
+
 
 int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro *livros, int total_emprestimos) {
 
@@ -52,16 +55,23 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro 
             break;
             
             case 4:
-                //Listar histórico de emprestimos
+                /*Listar histórico de emprestimos*/
+
+                listar_historico(emprestimos, total_emprestimos);
             
             break;
             
             case 5:
-                //Mostrar todos os livros emprestados por um usuário
-            
+                /*Mostrar todos os livros emprestados por um usuário */
+
+                printf("Informe o ID do usuario: \n");
+
+                
+
             break;
             
             case 0:
+
                 return total_emprestimos;
             
             break;
