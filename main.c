@@ -16,18 +16,17 @@ int main(){
 
     //incializa o vetor dinamico de livros
     livro *livros;
-    livros = (livro *)calloc(1,sizeof(livro));
-    int total_livros = 0;
-
+    usuario *u;
     emprestimo *emprestimos;
+    
+    livros = (livro *)calloc(1,sizeof(livro));
+    u = (usuario *)calloc(1,sizeof(usuario));
     emprestimos = (emprestimo *)calloc(1,sizeof(livro));
-
+    
+    int total_livros = 0;
+    int total_usuarios = 0;
     int total_emprestimos = 0;
     
-    usuario *u;
-    u = (usuario *)calloc(1,sizeof(usuario));
-    int total_usuarios = 0;
-
     int opcao = 0;
     
     //printa o menu principal
@@ -70,14 +69,7 @@ int main(){
 
                 pegar_livro(p, atual, titulo_busca);
             break;
-            
-            case 5:
-                printf("Digite o título do livro: \n");
-                scanf(" %s", titulo_busca);
-
-                devolver_livro(p, atual, titulo_busca);
-            break;
-                */
+            */
 
             case 0:
                 //libera a memória alocada e finaliza o programa

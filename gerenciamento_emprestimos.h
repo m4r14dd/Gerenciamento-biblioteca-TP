@@ -36,7 +36,8 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro 
                 scanf("%d", &id_livro);
 
                 registrar_emprestimo(emprestimos, usuarios, livros, id_usuario, id_livro, total_emprestimos);
-
+                total_emprestimos++;
+                
                 emprestimos = (emprestimo *)realloc(emprestimos, (total_emprestimos) + 1 *sizeof(emprestimo));
 
             break;
