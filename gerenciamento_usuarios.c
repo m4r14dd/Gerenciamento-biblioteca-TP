@@ -1,7 +1,7 @@
 #include "./registros/usuario.h"
 
 
-//#include "./funcoes/cadastrar_usuario.h"
+#include "./funcoes/cadastrar_usuario.h"
 #include "./funcoes/buscar_usuario.h"
 #include "./funcoes/menu.h"
 #include "./funcoes/listar_usuarios.h"
