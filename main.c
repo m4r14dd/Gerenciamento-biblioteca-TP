@@ -8,17 +8,21 @@
 #include "./funcoes/menu.h"
 
 #include "gerenciamento_livros.c"
+#include "gerenciamento_emprestimos.c"
 
 
 int main(){
 
-    //incializa o vetor dinamico de livros (calloc é pra inicializar o livro com todas as variaveis zeradas)
-    livro *p;
-    p = (livro *)calloc(1,sizeof(livro));
-    
+    //incializa o vetor dinamico de livros
+    livro *livros;
+    livros = (livro *)calloc(1,sizeof(livro));
+    int total_livros = 0;
+
+    emprestimo *emprestimos;
+    emprestimos = (emprestimo *)calloc(1,sizeof(livro));
+    int total_emprestimos = 0;
 
     int opcao = 0;
-    int total_livros = 0;
     
     //printa o menu principal
     menu_principal();
@@ -31,7 +35,7 @@ int main(){
                 menu_de_livros();
 
                 //chama a função que vai ler as entradas no menu de livros
-                total_livros = gerenciamento_livros(p, total_livros);
+                total_livros = gerenciamento_livros(livros, total_livros);
             
             break;
             
@@ -40,14 +44,18 @@ int main(){
                 menu_de_usuarios();
                 
                 //chama a funcao que ai ler as entradas no menu de usuarios
+                total_emprestimos = gerenciamento_emprestimos(emprestimos, usuarios, livros, total_emprestimos);
 
             break;
                 
-            /*
             case 3:
-                menu_de_emprestimos();
-            break;
+                //printa o menu de gerenciamento de emprestimos
+                menu_de_emprestimos(emprestimos,);
 
+
+            break;
+            
+            /*
             case 4:
                 menu_de_relatorios();
                 printf("Digite o título do livro: \n");
@@ -65,7 +73,8 @@ int main(){
                 */
             case 0:
                 //libera a memória alocada e finaliza o programa
-                free(p);
+                free(livros);
+                free(emprestimos);
                 return 0;
 
             break;

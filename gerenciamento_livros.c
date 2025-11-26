@@ -19,11 +19,12 @@ int gerenciamento_livros(livro *p, int total_livros) {
 
     while(scanf("%d", &opcao)){ 
 
-        //string pra caso o programa vá fazer a busca de um livro
-        char busca[100];
-        int busca_id;
-        int posicao;
-
+        char busca[100]; //string pra caso o programa vá fazer a busca de um livro
+        
+        int busca_id; //int para caso o programa vá fazer uma busca por id
+        
+        int posicao; //int para guardar a posicao de um livro buscado
+        
         switch (opcao) {
             case 1:
                 /*Adicionar novo livro*/
@@ -87,6 +88,7 @@ int gerenciamento_livros(livro *p, int total_livros) {
                 Retorna ao menu principal
                 e retorna a contadora de livros pra o programa principal
                 */
+               
                 return total_livros;
 
             break;
