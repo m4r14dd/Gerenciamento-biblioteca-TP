@@ -1,7 +1,7 @@
 #ifndef CADASTRAR_USUARIO_H
 #define CADASTRAR USUARIO_H
 #include<stdio.h>
-#include "../registros/usuario.h"
+#include "../../registros/usuario.h"
 
 void cadastrar_usuario(usuario *u, int total_usuario){
    printf("Digite o email do usuario: \n");

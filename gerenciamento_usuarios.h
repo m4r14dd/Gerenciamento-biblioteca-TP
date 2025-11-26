@@ -9,6 +9,7 @@
 
 
 #include <stdlib.h>
+#include <stdio.h>
 
 
 int gerenciamento_usuarios(usuario *u, int total_usuarios) {
@@ -43,7 +44,7 @@ int gerenciamento_usuarios(usuario *u, int total_usuarios) {
             case 4:
                printf("Digite o ID do usuario no qual voce quer remover\n");
                int idr;
-               scanf("%d",&idr);
+               scanf("%d", &idr);
                remover_usuario(u,total_usuarios,idr);
             break;
 

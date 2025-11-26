@@ -7,9 +7,9 @@
 #include "./registros/emprestimo.h"
 #include "./funcoes/menu.h"
 
-#include "gerenciamento_livros.c"
-#include "gerenciamento_emprestimos.c"
-#include "gerenciamento_usuarios.c"
+#include "gerenciamento_livros.h"
+#include "gerenciamento_emprestimos.h"
+#include "gerenciamento_usuarios.h"
 
 
 int main(){
@@ -57,7 +57,7 @@ int main(){
             //printa o menu de gerenciamento de emprestimos
                 menu_de_emprestimos();
                 
-                total_emprestimos = gerenciamento_emprestimos(emprestimos, usuarios, livros, total_emprestimos);
+                total_emprestimos = gerenciamento_emprestimos(emprestimos, u, livros, total_emprestimos);
             
             break;
            
@@ -78,10 +78,12 @@ int main(){
                 devolver_livro(p, atual, titulo_busca);
             break;
                 */
+
             case 0:
                 //libera a memória alocada e finaliza o programa
                 free(livros);
                 free(emprestimos);
+                free(u);
                 return 0;
 
             break;

@@ -2,9 +2,9 @@
 #define REGISTRAR_EMPRESTIMO_H
 
 
-#include "../registros/emprestimo.h"
-#include "../registros/usuario.h"
-#include "../registros/livro.h"
+#include "../../registros/emprestimo.h"
+#include "../../registros/usuario.h"
+#include "../../registros/livro.h"
 
 
 #include <stdio.h>
@@ -25,7 +25,7 @@ void registrar_emprestimo(emprestimo *emprestimos, usuario *usuarios, livro *liv
     printf("Insira a data do emprestimo: \n");
     scanf("%s", data_emprestimo);
 
-    emprestimos[emprestimo_atual].dataEmprestimo = data_emprestimo;
+    // emprestimos[emprestimo_atual].dataEmprestimo = data_emprestimo;
 
     emprestimos[emprestimo_atual].ativo = 1;
 

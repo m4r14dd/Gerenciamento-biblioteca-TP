@@ -1,7 +1,7 @@
 #ifndef REGISTRAR_DEVOLUCAO_H
 #define REGISTRAR_DEVOLUCAO_H
 
-#include "./registros/emprestimo.h"
+#include "../../registros/emprestimo.h"
 
 
 #include <stdio.h>

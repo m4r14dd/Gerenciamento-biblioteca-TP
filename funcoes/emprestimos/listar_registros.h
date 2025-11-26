@@ -1,14 +1,14 @@
-#ifndef LISTAR_REGISTROS_H
-#define LISTAR_REGISTROS_H
+#ifndef LISTAR_EMPRESTIMOS_H
+#define LISTAR_EMPRESTIMOS_H
 
 
-#include "./registros/emprestimo.h"
+#include "../../registros/emprestimo.h"
 
 
 #include <stdio.h>
 
 
-void listar_registros(emprestimo *emprestimos, int total_emprestimos) {
+void listar_emprestimos(emprestimo *emprestimos, int total_emprestimos) {
     
     printf("====Emprestimos ativos====\n");
 

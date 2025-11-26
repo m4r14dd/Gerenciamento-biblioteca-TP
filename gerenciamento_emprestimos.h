@@ -4,6 +4,10 @@
 #include "./registros/livro.h"
 
 
+#include "./funcoes/emprestimos/listar_historico.h"
+#include "./funcoes/emprestimos/listar_registros.h"
+#include "./funcoes/emprestimos/registrar_emprestimo.h"
+#include "./funcoes/emprestimos/registrar_devolucao.h"
 #include "./funcoes/menu.h"
 
 

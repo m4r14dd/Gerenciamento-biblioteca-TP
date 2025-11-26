@@ -2,13 +2,13 @@
 #define LISTAR_HISTORICO_H
 
 
-#include "./registros/emprestimo.h"
+#include "../../registros/emprestimo.h"
 
 
 #include <stdio.h>
 
 
-void listar_registros(emprestimo *emprestimos, int total_emprestimos) {
+void listar_historico(emprestimo *emprestimos, int total_emprestimos) {
     
     printf("====Histórico de emprestimos ====\n");
 
