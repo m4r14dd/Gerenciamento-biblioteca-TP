@@ -27,7 +27,12 @@ int buscar_livro(livro *p, int total_livros, char busca[]) {
     printf("\n====Livro: %s encontrado!====\n", p[i].titulo);
     printf("Autor: %s\n", p[i].autor);
     printf("Lançamento: %d\n", p[i].publicacao);
-    printf("Disponibilidade (1 para disponivel, 0 para indisponivel): %d\n\n", p[i].disponivel);
+        if(p[i].disponivel){
+            printf("Disponivel\n");
+        }
+        else{
+            printf("Indisponivel\n");
+        }
 
     return 1;
 

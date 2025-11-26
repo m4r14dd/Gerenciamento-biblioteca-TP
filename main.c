@@ -9,6 +9,7 @@
 
 #include "gerenciamento_livros.c"
 #include "gerenciamento_emprestimos.c"
+#include "gerenciamento_usuarios.c"
 
 
 int main(){
@@ -21,8 +22,14 @@ int main(){
     emprestimo *emprestimos;
     emprestimos = (emprestimo *)calloc(1,sizeof(livro));
     int total_emprestimos = 0;
+    
+    usuario *u;
+    u = (usuario *)calloc(1,sizeof(usuario));
 
     int opcao = 0;
+
+
+    int total_usuarios = 0;
     
     //printa o menu principal
     menu_principal();
@@ -43,17 +50,18 @@ int main(){
                 //printa o menu de gerenciamento de usuarios
                 menu_de_usuarios();
                 
-                //chama a funcao que ai ler as entradas no menu de usuarios
-                total_emprestimos = gerenciamento_emprestimos(emprestimos, usuarios, livros, total_emprestimos);
+                total_usuarios = gerenciamento_usuarios(u,total_usuarios);
 
             break;
-                
+            
             case 3:
-                //printa o menu de gerenciamento de emprestimos
-                menu_de_emprestimos(emprestimos,);
-
-
+            //printa o menu de gerenciamento de emprestimos
+                menu_de_emprestimos();
+                
+                total_emprestimos = gerenciamento_emprestimos(emprestimos, usuarios, livros, total_emprestimos);
+            
             break;
+           
             
             /*
             case 4:

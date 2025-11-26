@@ -1,6 +1,6 @@
 #ifndef PEGAR_LIVRO_H
 #define PEGAR_LIVRO_H
-
+#include <string.h>
 #include <stdio.h>
 #include <string.h>
 

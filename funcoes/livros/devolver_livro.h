@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 #include "../registros/livro.h"
 
 int devolver_livro(livro *p, int atual, char titulo[]) {

@@ -1,7 +1,7 @@
 #ifndef LISTAR_LIVROS_H
 #define LISTAR_LIVROS_H
-
-#include "../../registros/livro.h"
+#include <stdio.h>
+#include "../registros/livro.h"
 
 
 void listar_livros(livro *p, int total_livros) {
