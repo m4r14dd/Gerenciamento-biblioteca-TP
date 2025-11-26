@@ -1,5 +1,5 @@
-#ifndef BUSCAR_ID_H
-#define BUSCAR_ID_H
+#ifndef BUSCAR_IDL_H
+#define BUSCAR_IDL_H
 
 #include <stdio.h>
 
@@ -7,7 +7,7 @@
 #include "../../registros/livro.h"
 
 
-int buscar_id (livro *p, int id, int total_livros) {
+int buscar_idl (livro *p, int id, int total_livros) {
 
     int i = 0;
     while(p[i].idLivro != id) {

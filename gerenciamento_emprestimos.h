@@ -14,7 +14,8 @@
 #include <stdlib.h>
 
 
-int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro *livros, int total_emprestimos) {
+int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, 
+    livro *livros, int total_emprestimos, int total_livros, int total_usuarios) {
 
     int opcao;
     
@@ -35,11 +36,18 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro 
                 printf("Informe o ID do livro: \n");
                 scanf("%d", &id_livro);
 
-                registrar_emprestimo(emprestimos, usuarios, livros, id_usuario, id_livro, total_emprestimos);
-                total_emprestimos++;
-                
-                emprestimos = (emprestimo *)realloc(emprestimos, (total_emprestimos) + 1 *sizeof(emprestimo));
+                int pid = buscar_idl(livros,id_livro,total_livros);
+                int uid = buscar_idu(usuarios, total_usuarios);
+                if(livros[pid].idLivro && uid){
 
+                    registrar_emprestimo(emprestimos, usuarios, livros, id_usuario, id_livro, total_emprestimos);
+                    livros[pid].idLivro = false;
+                    emprestimos = (emprestimo *)realloc(emprestimos, (total_emprestimos) + 1 *sizeof(emprestimo));
+
+                }
+                else{
+                printf("Nao sera possivel fazer este emprestimo : usuario inativo ou livro indisponivel\n");
+                }
             break;
             
             case 2:
@@ -48,7 +56,14 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro 
                 printf("Informe o ID do emprestimo: \n");
                 scanf("%d", &id_emprestimo);
 
+                if(buscar_ide(emprestimos,livros,id_emprestimo,total_emprestimos,total_livros)){
+
                 registrar_devolucao(emprestimos, total_emprestimos, id_emprestimo);
+
+                }
+                else{
+                printf("Este livro nao foi emprestado\n");
+                }
 
             break;
             

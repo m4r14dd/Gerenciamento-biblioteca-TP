@@ -12,6 +12,7 @@ void cadastrar_usuario(usuario *u, int total_usuario){
     
     u[total_usuario].ativo = true;
     u[total_usuario].idUsuario = u[total_usuario - 1].idUsuario + 1;
+    printf("ID do novo usuario é: %d\n",u[total_usuario].idUsuario);
 
 }
 

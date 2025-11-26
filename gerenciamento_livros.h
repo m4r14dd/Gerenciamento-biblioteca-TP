@@ -5,7 +5,7 @@
 #include "./funcoes/livros/adicionar_livro.h"
 #include "./funcoes/livros/buscar_livro.h"
 #include "./funcoes/livros/listar_livros.h"
-#include "./funcoes/livros/buscar_id.h"
+#include "./funcoes/livros/buscar_idl.h"
 #include "./funcoes/livros/atualizar_livro.h"
 #include "./funcoes/livros/remover_livro.h"
 #include "./funcoes/menu.h"
@@ -62,7 +62,7 @@ int gerenciamento_livros(livro *p, int total_livros) {
                 printf("Informe o ID do livro: \n");
                 scanf("%d", &busca_id);
 
-                posicao = buscar_id(p, busca_id, total_livros);
+                posicao = buscar_idl(p, busca_id, total_livros);
                 atualizar_livro(p, posicao);
 
             break;
@@ -73,7 +73,7 @@ int gerenciamento_livros(livro *p, int total_livros) {
                 printf("Informe o ID do livro a ser removido: \n"); 
                 scanf("%d", &busca_id);
 
-                posicao = buscar_id(p, busca_id, total_livros);
+                posicao = buscar_idl(p, busca_id, total_livros);
                 
                 remover_livro(p, posicao, total_livros);
                 total_livros--;
