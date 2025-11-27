@@ -14,14 +14,14 @@ void contar_livros(livro *livros, int total_livros){
     int indisponiveis = 0;
 
     for(int i = 0; i < total_livros; i++) {
-        if(livros[i].disponivel == 1){
+        if(livros[i].disponivel == 0){
             disponiveis++;
         }else {
             indisponiveis++;
         }
     }
 
-    printf("%d Livros disponíveis | %d Livros indisponíveis \n");
+    printf("%d Livros disponíveis | %d Livros indisponíveis \n", disponiveis, indisponiveis);
 
 }
 

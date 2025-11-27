@@ -10,26 +10,29 @@
 #include "gerenciamento_livros.h"
 #include "gerenciamento_emprestimos.h"
 #include "gerenciamento_usuarios.h"
+#include "gerenciamento_relatorios.h"
 
 
 int main(){
 
     //incializa o vetor dinamico de livros
+
     livro *livros;
     usuario *u;
     emprestimo *emprestimos;
     
-    livros = (livro *)calloc(1,sizeof(livro));
-    u = (usuario *)calloc(1,sizeof(usuario));
-    emprestimos = (emprestimo *)calloc(1,sizeof(livro));
+    livros = (livro *)calloc(2,sizeof(livro));
+    u = (usuario *)calloc(2,sizeof(usuario));
+    emprestimos = (emprestimo *)calloc(2,sizeof(livro));
     
-    int total_livros = 0;
-    int total_usuarios = 0;
-    int total_emprestimos = 0;
+    int total_livros = 1;
+    int total_usuarios = 1;
+    int total_emprestimos = 1;
     
     int opcao = 0;
     
     //printa o menu principal
+
     menu_principal();
     
     while(scanf("%d", &opcao)) {
@@ -37,15 +40,18 @@ int main(){
         switch (opcao) {
             case 1:
                 //printa o menu de gerenciamento de livros
+                
                 menu_de_livros();
 
                 //chama a função que vai ler as entradas no menu de livros
+                
                 total_livros = gerenciamento_livros(livros, total_livros);
-            
+                
             break;
             
             case 2:
                 //printa o menu de gerenciamento de usuarios
+                
                 menu_de_usuarios();
                 
                 total_usuarios = gerenciamento_usuarios(u,total_usuarios);
@@ -53,23 +59,28 @@ int main(){
             break;
             
             case 3:
-            //printa o menu de gerenciamento de emprestimos
+                //printa o menu de gerenciamento de emprestimos
+                
                 menu_de_emprestimos();
                 
-                total_emprestimos = gerenciamento_emprestimos(emprestimos, u, livros, total_emprestimos);
+                total_emprestimos = gerenciamento_emprestimos(emprestimos, u, livros, total_emprestimos, total_livros, total_usuarios);
             
             break;
            
             case 4:
+
                 menu_de_relatorios();
-                gerenciamento_relatorios();
+                gerenciamento_relatorios(emprestimos,u,livros,total_emprestimos,total_livros);
+            
             break; 
 
             case 0:
                 //libera a memória alocada e finaliza o programa
+
                 free(livros);
                 free(emprestimos);
                 free(u);
+
                 return 0;
 
             break;

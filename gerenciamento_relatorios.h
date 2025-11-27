@@ -6,15 +6,13 @@
 
 #include "./funcoes/relatorios/contar_livros.h"
 #include "./funcoes/relatorios/emprestimos_usuario.h"
-#include "./funcoes/relatorios/livros_cadastrados.h"
-#include "./funcoes/relatorios/livros_disponiveis.h"
 #include "./funcoes/menu.h"
 
 
 #include <stdlib.h>
 
 
-int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro *livros, int total_emprestimos, int total_livros) {
+int gerenciamento_relatorios(emprestimo *emprestimos, usuario *usuarios, livro *livros, int total_emprestimos, int total_livros) {
 
     int opcao;
     
@@ -53,13 +51,13 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro 
             
             case 0:
                 
-                return;
+                return 1;
 
             break;
 
         }
 
-        menu_de_emprestimos();
+        menu_de_relatorios();
     }
 
 }

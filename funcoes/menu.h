@@ -49,4 +49,15 @@ void menu_de_emprestimos(){
 
 }
 
+void menu_de_relatorios(){
+
+    printf("====MENU DE GERENCIAMENTO DE RELATORIOS====\n");
+    printf("1. Quantidade de livros cadastrados\n");
+    printf("2. Quantidade de livros disponíveis e emprestados\n");
+    printf("3. Usuário com mais empréstimos ativos\n");
+    printf("4. Livro mais emprestado\n");
+    printf("0. Retornar ao menu principal\n");
+
+}
+
 #endif

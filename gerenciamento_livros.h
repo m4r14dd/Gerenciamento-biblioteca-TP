@@ -34,7 +34,7 @@ int gerenciamento_livros(livro *p, int total_livros) {
 
                 //incrementa a contadora de livros totais e aumenta o tamanho do vetor dinâmico
                 total_livros++; 
-                p = (livro *)realloc(p, (total_livros)+1*sizeof(livro));
+                p = (livro *)realloc(p, (total_livros) + 1  * sizeof(livro));
 
             break;
 
@@ -96,6 +96,7 @@ int gerenciamento_livros(livro *p, int total_livros) {
         }
 
         //printa o menu de opções de gerenciamento de livros
+
         menu_de_livros();
 
     }

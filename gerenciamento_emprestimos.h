@@ -8,6 +8,8 @@
 #include "./funcoes/emprestimos/listar_registros.h"
 #include "./funcoes/emprestimos/registrar_emprestimo.h"
 #include "./funcoes/emprestimos/registrar_devolucao.h"
+#include "./funcoes/emprestimos/buscar_ide.h"
+#include "./funcoes/usuarios/buscar_idu.h"
 #include "./funcoes/menu.h"
 
 
@@ -37,7 +39,7 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
                 scanf("%d", &id_livro);
 
                 int pid = buscar_idl(livros,id_livro,total_livros);
-                int uid = buscar_idu(usuarios, total_usuarios);
+                int uid = buscar_idu(usuarios, id_usuario, total_usuarios);
                 if(livros[pid].idLivro && uid){
 
                     registrar_emprestimo(emprestimos, usuarios, livros, id_usuario, id_livro, total_emprestimos);
