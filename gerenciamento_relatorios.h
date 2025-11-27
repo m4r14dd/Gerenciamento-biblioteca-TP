@@ -4,7 +4,7 @@
 #include "./registros/livro.h"
 
 
-#include "./funcoes/relatorios/emprestimos_livro.h"
+#include "./funcoes/relatorios/contar_livros.h"
 #include "./funcoes/relatorios/emprestimos_usuario.h"
 #include "./funcoes/relatorios/livros_cadastrados.h"
 #include "./funcoes/relatorios/livros_disponiveis.h"
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 
-int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro *livros, int total_emprestimos) {
+int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro *livros, int total_emprestimos, int total_livros) {
 
     int opcao;
     
@@ -27,31 +27,34 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios, livro 
         switch(opcao) {
 
             case 1:
-                
-
+                /*Quantidade total de livros cadastrados*/
+               
+                printf("Total de livros cadastrados: %d \n", total_livros);
+            
             break;
             
             case 2:
+                /*Quantidade de livros disponíveis e emprestados*/
 
+                contar_livros(livros, total_livros);
 
             break;
             
             case 3:
-            
+                /*Usuário com mais emprestimos ativos*/
+
+                emprestimos_usuario(emprestimos, total_emprestimos);
             break;
             
             case 4:
-            
-            break;
-            
-            case 5:
-                
+                /*Livro mais emprestado*/
+
             break;
             
             case 0:
+                
+                return;
 
-                return total_emprestimos;
-            
             break;
 
         }
