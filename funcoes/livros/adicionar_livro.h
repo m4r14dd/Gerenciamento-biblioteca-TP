@@ -4,30 +4,34 @@
 #include <stdio.h>
 #include <string.h>
 
-//importa a struct livro da pasta /registros
+//importa a struct livro
 #include "../../registros/livro.h"
 
 
-void adicionar_livro(livro *p, int total_livros) {
+void adicionar_livro(livro *livros, int total_livros) {
+
     /*
-    Adiciona um livro ao vetor dinâmico p
-    usa a contadora de livros pra acessar a ultima posição do vetor p
+    Adiciona um livro ao vetor de livros
+    usa a contadora de livros pra acessar a ultima posição do vetor
     */
 
+    //lê o título do novo livro
     printf("Informe o título do livro: \n");
-    scanf("%s", p[total_livros].titulo);
+    scanf("%s", livros[total_livros].titulo);
 
+    //lê o autor do novo livro
     printf("Informe o nome do Autor: \n");
-    scanf("%s", p[total_livros].autor);
+    scanf("%s", livros[total_livros].autor);
 
+    //lê o ano de publicação do novo livro
     printf("Informe o ano de publicação: \n");
-    scanf("%d", &p[total_livros].publicacao);
+    scanf("%d", &livros[total_livros].publicacao);
 
-    p[total_livros].disponivel = true;
+    //define o estado do novo livro como disponível
+    livros[total_livros].disponivel = true;
     
-    //define o id do livro como a "posição" no vetor.
-    //o i-ésimo livro tem o id do livro[i - 1] + 1
-    p[total_livros].idLivro = p[total_livros - 1].idLivro + 1;
+    //define o id do i-ésimo livro como o id do livro anterior + 1
+    livros[total_livros].idLivro = livros[total_livros - 1].idLivro + 1;
 
 }
 

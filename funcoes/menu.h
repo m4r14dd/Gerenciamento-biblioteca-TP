@@ -1,7 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
+
 #include <stdio.h>
+
 
 void menu_principal() {
     
@@ -59,5 +61,15 @@ void menu_de_relatorios(){
     printf("0. Retornar ao menu principal\n");
 
 }
+
+void menu_atualizacao() {
+
+    printf("====INFORME O DADO A SER ATUALIZADO===\n");
+    printf("1. Atualizar título\n");
+    printf("2. Atualizar autor\n");
+    printf("3. Atualizar ano de publicação\n");
+
+}
+
 
 #endif

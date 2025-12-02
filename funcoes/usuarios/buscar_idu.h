@@ -8,12 +8,19 @@
 #include <stdio.h>
 
 
-int buscar_idu(usuario *u,int id, int total_ususarios){
+int buscar_idu(usuario *usuarios,int id, int total_ususarios){
+    
+    /*
+    Busca a posição de um usuario no vetor de usuarios utilizando seu ID
+    */
+    
     int i;
 
-    for(i = 0; i < total_ususarios && u[i].idUsuario != id; i++);
+    for(i = 0; i < total_ususarios && usuarios[i].idUsuario != id; i++);
 
-    return u[i].ativo;
+    return usuarios[i].ativo;
+
+
 }
 
 

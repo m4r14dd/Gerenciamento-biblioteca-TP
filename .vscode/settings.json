@@ -20,7 +20,10 @@
     "listar_livros.h": "c",
     "menu.h": "c",
     "emprestimo.h": "c",
-    "gerenciamento_usuarios.h": "c"
+    "gerenciamento_usuarios.h": "c",
+    "remover_usuario.h": "c",
+    "listar_usuarios.h": "c",
+    "usuario.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

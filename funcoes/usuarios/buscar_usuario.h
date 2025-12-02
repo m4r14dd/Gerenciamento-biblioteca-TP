@@ -14,24 +14,35 @@ int buscar_usuario(usuario *u, int total_usuarios, char busca[]) {
     */
 
     int i = 0;
+
     while(strcmp(u[i].nome, busca) != 0) {
+    
         i++;
         if(i > total_usuarios) {
-            printf("Usuario não encontrado!\n");
-            return 0;
+          //já acessou todos os usuários do vetor e não encontrou
+          
+          printf("Usuario não encontrado!\n");
+        
+          return 0;
+    
         }
     }
 
-    //printa os dados do usuario encontrado
+    //Imprime os dados do usuário encontrado
     printf("\n====Usuario: %s encontrado!====\n", u[i].nome);
     printf("ID: %d \n", u[i].idUsuario);
     printf("Email %s \n\n", u[i].email);
 
-    if(u[i].ativo){
+    if(u[i].ativo) {
+
       printf("Ativo\n");
+
     }
-    else{
+
+    else {
+      
       printf("Inativo\n");
+
     }
     
     return 1;

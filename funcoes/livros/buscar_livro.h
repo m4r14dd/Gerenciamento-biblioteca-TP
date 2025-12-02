@@ -4,35 +4,41 @@
 #include <stdio.h>
 #include <string.h>
 
-//importa a struct livro da pasta /registros
+//importa a struct livro
 #include "../../registros/livro.h"
 
 
-int buscar_livro(livro *p, int total_livros, char busca[]) {
+int buscar_livro(livro *livros, int total_livros, char busca[]) {
     /*
-    Busca um livro no vetor p
+    Busca um livro no vetor de livros
     passa por todos os livros, até achar um que possua o nome ou titulo condizente
     */
 
     int i = 0;
-    while(strcmp(p[i].titulo, busca) != 0 && strcmp(p[i].autor, busca) != 0) {
+
+    while(strcmp(livros[i].titulo, busca) != 0 && strcmp(livros[i].autor, busca) != 0) {
         i++;
         if(i > total_livros) {
+            //já acessou todos os livros do vetor e não encontrou
+            
             printf("Livro não encontrado!\n");
             return 0;
+        
         }
     }
 
     //printa os dados do livro encontrado
-    printf("\n====Livro: %s encontrado!====\n", p[i].titulo);
-    printf("Autor: %s\n", p[i].autor);
-    printf("Lançamento: %d\n", p[i].publicacao);
-        if(p[i].disponivel){
-            printf("Disponivel\n");
-        }
-        else{
-            printf("Indisponivel\n");
-        }
+    printf("\n====Livro: %s encontrado!====\n", livros[i].titulo);
+    printf("Autor: %s\n", livros[i].autor);
+    printf("Lançamento: %d\n", livros[i].publicacao);
+
+    //verifica se o livro encontrado está disponível
+    if(livros[i].disponivel){
+        printf("Disponivel\n");
+    }
+    else{
+        printf("Indisponivel\n");
+    }
 
     return 1;
 

@@ -4,25 +4,36 @@
 #include <stdio.h>
 #include <string.h>
 
-//importa a struct livro da pasta /registros
+//importa a struct livro
 #include "../../registros/livro.h"
 
 
-void remover_livro(livro *p, int posicao, int total_livros) {
+void remover_livro(livro *livros, int posicao, int total_livros) {
 
-    /**/
+    /*
+    Remove um livro do vetor de livros
+    utiliza o inteiro posicao para acessar o livro a ser removido e
+    move todos os livros seguintes para trás.
+    */
 
-    if(p == NULL) {
+   //Verifica se o vetor é nulo
+    if(livros == NULL) {
+        
         printf("Erro: vetor é NULL! \n");
     
     }
+
+    //O vetor está vazio
     if(total_livros <= 0 ) {
+        
         printf("Erro: não há livros na biblioteca! \n");
 
     }
     
+    //varre o vetor livro e move os livros para trás
     for(int i = posicao; i < total_livros - 1; i++) {
-        p[i] = p[i + 1];
+    
+        livros[i] = livros[i + 1];
     
     }
 
