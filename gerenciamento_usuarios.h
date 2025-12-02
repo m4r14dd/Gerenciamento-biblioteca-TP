@@ -33,7 +33,7 @@ int gerenciamento_usuarios(usuario *usuarios, int total_usuarios) {
                 
                 //incrementa o total de usuarios e aumenta o espaço alocado para o vetor de usuarios
                 total_usuarios++; 
-                usuarios = (usuario *)realloc(usuarios, (total_usuarios)+1*sizeof(usuario));
+                usuarios = (usuario *)realloc(usuarios, (total_usuarios + 1 )*sizeof(usuario));
 
             break;
 
@@ -73,11 +73,7 @@ int gerenciamento_usuarios(usuario *usuarios, int total_usuarios) {
                 /*Retorna para o menu principal*/
 
                 //limpa o terminal antes de retornar ao menu principal
-                #ifdef _WIN32
-                    system("cls");
-                #else
-                    system("clear");
-                #endif
+                limpar_tela();
 
                 //Retorna o novo total de usuarios para o main.c
                 return total_usuarios;

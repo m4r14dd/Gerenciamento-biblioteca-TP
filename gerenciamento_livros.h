@@ -32,7 +32,7 @@ int gerenciamento_livros(livro *livros, int total_livros) {
 
                 //incrementa a contadora de livros e aumenta o espaço alocado pelo vetor de livros
                 total_livros++; 
-                livros = (livro *)realloc(livros, (total_livros) + 1  * sizeof(livro));
+                livros = (livro *)realloc(livros, (total_livros + 1) * sizeof(livro));
 
             break;
 
@@ -94,11 +94,7 @@ int gerenciamento_livros(livro *livros, int total_livros) {
                 /*Retorna para o menu principal*/    
 
                 //limpa o terminal antes de retornar ao menu principal
-                #ifdef _WIN32
-                    system("cls");
-                #else
-                    system("clear");
-                #endif
+                limpar_tela();
 
                 //Retorna o novo total de livros para o main.c
                 return total_livros;

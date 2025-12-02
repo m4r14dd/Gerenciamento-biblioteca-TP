@@ -31,6 +31,8 @@ void registrar_emprestimo(emprestimo *emprestimos, usuario *usuarios, livro *liv
         // emprestimos[emprestimo_atual].dataEmprestimo = data_emprestimo;
         emprestimos[emprestimo_atual].ativo = 1;
 
+        printf("ID do emprestimo: %d", emprestimos[emprestimo_atual].idEmprestimo);
+
 }
 
 

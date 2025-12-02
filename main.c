@@ -21,14 +21,14 @@ int main(){
     usuario *usuarios;
     emprestimo *emprestimos;
     
-    livros = (livro *)calloc(2,sizeof(livro));
-    usuarios = (usuario *)calloc(2,sizeof(usuario));
-    emprestimos = (emprestimo *)calloc(2,sizeof(emprestimo));
+    livros = (livro *)calloc(1,sizeof(livro));
+    usuarios = (usuario *)calloc(1,sizeof(usuario));
+    emprestimos = (emprestimo *)calloc(1,sizeof(emprestimo));
     
     //variaveis para manter contagem dos dados
-    int total_livros = 1;
-    int total_usuarios = 1;
-    int total_emprestimos = 1;
+    int total_livros = 0;
+    int total_usuarios = 0;
+    int total_emprestimos = 0;
     
     int opcao = 0;
     
@@ -85,9 +85,9 @@ int main(){
 
             case 0:
                 //libera a memória alocada
+                free(usuarios);
                 free(livros);
                 free(emprestimos);
-                free(usuarios);
 
                 return 0;
 

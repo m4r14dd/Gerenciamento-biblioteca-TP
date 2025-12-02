@@ -10,15 +10,15 @@
 #include <stdio.h>
 
 
-int emprestimos_usuario(emprestimo *emprestimos, int total_emprestimos, int total_usuarios) {
+int emprestimos_livro(emprestimo *emprestimos, int total_emprestimos, int total_usuarios) {
 
     /*
-    Encontra o usuário com maior número de emprestios ativos
+    Encontra o livro com maior número de emprestios 
     */
 
-    if(total_usuarios == 0) {
+    if(total_emprestimos == 0) {
 
-        printf("Não há usuários no sistema! \n");
+        printf("Não há emprestimos no sistema! \n");
         return 0;
 
     }
@@ -27,10 +27,10 @@ int emprestimos_usuario(emprestimo *emprestimos, int total_emprestimos, int tota
 
     for(int i = 0; i < total_emprestimos; i++) {
 
-        if(emprestimos[i].idUsuario > valor_maximo && emprestimos[i].ativo == 1){
+        if(emprestimos[i].idLivro > valor_maximo){
             
             //encontra o maior ID de usuário com emprestimo ativo
-            valor_maximo = emprestimos[i].idUsuario;
+            valor_maximo = emprestimos[i].idLivro;
         
         }
 
@@ -43,20 +43,20 @@ int emprestimos_usuario(emprestimo *emprestimos, int total_emprestimos, int tota
     for(int i = 0; i < total_emprestimos; i++){
 
         //aumenta a contagem de frequencia de emprestimos de um usuario
-        frequencia[emprestimos[i].idUsuario]++;
+        frequencia[emprestimos[i].idLivro]++;
 
     }
 
     //variavel para manter contagem da maior frequencia
     int maior_frequencia = 0;
-    int usuario = 0;
+    int livro = 0;
 
     for(int i = 0; i <= valor_maximo; i++) {
 
         if(frequencia[i] > maior_frequencia) {
 
             maior_frequencia = frequencia[i];
-            usuario = i;
+            livro = i;
 
         }
 
@@ -65,7 +65,7 @@ int emprestimos_usuario(emprestimo *emprestimos, int total_emprestimos, int tota
     //libera a memoria alocada pelo vetor frequencia
     free(frequencia);
 
-    printf("ID do usuario com mais emprestimos: %d \n", usuario);
+    printf("ID do usuario com mais emprestimos: %d \n", livro);
     return 1;
 
 }

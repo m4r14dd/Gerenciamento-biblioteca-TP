@@ -8,7 +8,7 @@
 //importa a struct livro
 #include "../registros/livro.h"
 
-int devolver_livro(livro *livros, int atual, char titulo[]) {
+int devolver_livro(livro *livros, int total_livros, char titulo[]) {
 
     /*
     Retorna um livro ao definir seu estado como indisponível
@@ -20,7 +20,7 @@ int devolver_livro(livro *livros, int atual, char titulo[]) {
     while(strcmp(livros[i].titulo, titulo) != 0){
         i++;
         
-        if(i > atual) {
+        if(i > total_livros) {
             //Já acessou todos os livros do vetor e não encontrou
 
             printf("Livro não encontrado\n");
@@ -40,7 +40,7 @@ int devolver_livro(livro *livros, int atual, char titulo[]) {
 
     //devolve o livro
     livros[i].disponivel = true;
-    printf("Livro %s devolvido!\n", livro[i].titulo);
+    printf("Livro %s devolvido!\n", livros[i].titulo);
     
     return 1;
 

@@ -58,7 +58,7 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
 
                     //incrementa a contadora de emprestimos e aumenta o espaço alocado pelo vetor de emprestimos
                     total_emprestimos++;
-                    emprestimos = (emprestimo *)realloc(emprestimos, (total_emprestimos) + 1 *sizeof(emprestimo));
+                    emprestimos = (emprestimo *)realloc(emprestimos, (total_emprestimos + 1) *sizeof(emprestimo));
 
                 }
 
@@ -79,7 +79,7 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
 
                 if(buscar_ide(emprestimos,livros,id_emprestimo,total_emprestimos,total_livros)){
 
-                    registrar_devolucao(emprestimos, total_emprestimos, id_emprestimo);
+                    registrar_devolucao(emprestimos, livros, total_emprestimos,  id_emprestimo, total_livros);
 
                 }
 
@@ -116,11 +116,7 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
                 /*Retorna para o menu principal*/    
 
                 //limpa o terminal antes de retornar ao menu principal
-                #ifdef _WIN32
-                    system("cls");
-                #else
-                    system("clear");
-                #endif
+                limpar_tela();
 
                 //Retorna o novo total de emprestimos para o main.c
                 return total_emprestimos;

@@ -31,7 +31,7 @@ void remover_livro(livro *livros, int posicao, int total_livros) {
     }
     
     //varre o vetor livro e move os livros para trás
-    for(int i = posicao; i < total_livros - 1; i++) {
+    for(int i = posicao; i <= total_livros; i++) {
     
         livros[i] = livros[i + 1];
     

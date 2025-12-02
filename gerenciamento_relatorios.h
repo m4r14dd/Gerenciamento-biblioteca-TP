@@ -7,6 +7,7 @@
 //importa todas as funções para o gerenciamento de relatorios
 #include "./funcoes/relatorios/contar_livros.h"
 #include "./funcoes/relatorios/emprestimos_usuario.h"
+#include "./funcoes/relatorios/emprestimos_livro.h"
 #include "./funcoes/menu.h"
 
 
@@ -56,11 +57,7 @@ int gerenciamento_relatorios(emprestimo *emprestimos, usuario *usuarios,
                 /*Retorna ao menu principal*/
 
                 //limpa o terminal antes de retornar ao menu principal
-                #ifdef _WIN32
-                    system("cls");
-                #else
-                    system("clear");
-                #endif
+                limpar_tela();
 
                 return 1;
 

@@ -71,5 +71,15 @@ void menu_atualizacao() {
 
 }
 
+void limpar_tela() {
+    
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+
+}
+
 
 #endif
