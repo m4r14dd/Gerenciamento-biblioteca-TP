@@ -11,7 +11,7 @@ typedef struct{
     int idUsuario;
     int idLivro;
     char dataEmprestimo[11]; //dd/mm/aaaa
-    char dataDevolucao[11];
+    char dataDevolucao[11]; //dd/mm/aaaa
     int ativo; //1 = ativo 0 = concluido
 
 }emprestimo;

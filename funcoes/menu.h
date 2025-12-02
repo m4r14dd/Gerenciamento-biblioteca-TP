@@ -1,7 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
+
 #include <stdio.h>
+
 
 void menu_principal() {
     
@@ -48,5 +50,36 @@ void menu_de_emprestimos(){
     printf("0. Retornar ao menu principal\n");
 
 }
+
+void menu_de_relatorios(){
+
+    printf("====MENU DE GERENCIAMENTO DE RELATORIOS====\n");
+    printf("1. Quantidade de livros cadastrados\n");
+    printf("2. Quantidade de livros disponíveis e emprestados\n");
+    printf("3. Usuário com mais empréstimos ativos\n");
+    printf("4. Livro mais emprestado\n");
+    printf("0. Retornar ao menu principal\n");
+
+}
+
+void menu_atualizacao() {
+
+    printf("====INFORME O DADO A SER ATUALIZADO===\n");
+    printf("1. Atualizar título\n");
+    printf("2. Atualizar autor\n");
+    printf("3. Atualizar ano de publicação\n");
+
+}
+
+void limpar_tela() {
+    
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+
+}
+
 
 #endif

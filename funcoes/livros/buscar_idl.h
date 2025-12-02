@@ -1,19 +1,28 @@
 #ifndef BUSCAR_IDL_H
 #define BUSCAR_IDL_H
 
+
 #include <stdio.h>
 
-//importa a struct livro da pasta /registros
+
+//importa a struct livro
 #include "../../registros/livro.h"
 
 
-int buscar_idl (livro *p, int id, int total_livros) {
+int buscar_idl (livro *livros, int id, int total_livros) {
+    /*
+    Varre o vetor de livros em busca de um ID igual
+    */
+
 
     int i = 0;
-    while(p[i].idLivro != id) {
+
+    while(livros[i].idLivro != id) {
         i++;
 
         if(i > total_livros) {
+            //já acessou todos os livros do vetor e não encontrou
+
             printf("Livro não encontrado!\n");
             return 0;
 
@@ -21,6 +30,7 @@ int buscar_idl (livro *p, int id, int total_livros) {
 
     }
 
+    //retorna a posição do livro desejado
     return i;
 
 }

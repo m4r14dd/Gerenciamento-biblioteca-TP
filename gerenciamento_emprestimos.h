@@ -1,13 +1,18 @@
-//importa as structs da pasta /registros
+#ifndef GERENCIAMENTO_EMPRESTIMOS_H
+#define GERENCIAMENTO_EMPRESTIMOS_H
+
+//importa as structs de emprestimo, usuario e livro
 #include "./registros/emprestimo.h"
 #include "./registros/usuario.h"
 #include "./registros/livro.h"
 
-
+//importa as funções para o gerenciamento de emprestimos
 #include "./funcoes/emprestimos/listar_historico.h"
 #include "./funcoes/emprestimos/listar_registros.h"
 #include "./funcoes/emprestimos/registrar_emprestimo.h"
 #include "./funcoes/emprestimos/registrar_devolucao.h"
+#include "./funcoes/emprestimos/buscar_ide.h"
+#include "./funcoes/usuarios/buscar_idu.h"
 #include "./funcoes/menu.h"
 
 
@@ -19,6 +24,7 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
 
     int opcao;
     
+    //Variaveis para a busca nos vetores
     int id_usuario;
     int id_livro;
     int id_emprestimo;
@@ -30,24 +36,39 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
             case 1:
                 /*Registrar novo empréstimo*/
 
+                //Lê o ID do usuário
                 printf("Informe o ID do usuário: \n");
                 scanf("%d", &id_usuario);
 
+                //Lê o ID do livro
                 printf("Informe o ID do livro: \n");
                 scanf("%d", &id_livro);
 
-                int pid = buscar_idl(livros,id_livro,total_livros);
-                int uid = buscar_idu(usuarios, total_usuarios);
-                if(livros[pid].idLivro && uid){
+                //busca a posicao do livro e do usuario nos vetores
+                int posicao_livro = buscar_idl(livros,id_livro,total_livros);
+                int posicao_usuario = buscar_idu(usuarios, id_usuario, total_usuarios);
 
+                if(livros[posicao_livro].disponivel && posicao_usuario){
+
+                    //registra um novo emprestimo
                     registrar_emprestimo(emprestimos, usuarios, livros, id_usuario, id_livro, total_emprestimos);
-                    livros[pid].idLivro = false;
-                    emprestimos = (emprestimo *)realloc(emprestimos, (total_emprestimos) + 1 *sizeof(emprestimo));
+                    
+                    //define o livro como indisponível
+                    livros[posicao_livro].disponivel = false;
+
+                    //incrementa a contadora de emprestimos e aumenta o espaço alocado pelo vetor de emprestimos
+                    total_emprestimos++;
+                    emprestimos = (emprestimo *)realloc(emprestimos, (total_emprestimos + 1) *sizeof(emprestimo));
 
                 }
+
                 else{
-                printf("Nao sera possivel fazer este emprestimo : usuario inativo ou livro indisponivel\n");
+                    
+                    //emprestimo impossível
+                    printf("Emprestimo impossível : usuário inativo ou livro indisponível\n");
+                
                 }
+
             break;
             
             case 2:
@@ -58,11 +79,14 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
 
                 if(buscar_ide(emprestimos,livros,id_emprestimo,total_emprestimos,total_livros)){
 
-                registrar_devolucao(emprestimos, total_emprestimos, id_emprestimo);
+                    registrar_devolucao(emprestimos, livros, total_emprestimos,  id_emprestimo, total_livros);
 
                 }
+
                 else{
-                printf("Este livro nao foi emprestado\n");
+                
+                    printf("Este livro nao foi emprestado\n");
+                
                 }
 
             break;
@@ -86,19 +110,26 @@ int gerenciamento_emprestimos(emprestimo *emprestimos, usuario *usuarios,
 
                 printf("Informe o ID do usuario: \n");
 
-                
-
             break;
             
             case 0:
+                /*Retorna para o menu principal*/    
 
+                //limpa o terminal antes de retornar ao menu principal
+                limpar_tela();
+
+                //Retorna o novo total de emprestimos para o main.c
                 return total_emprestimos;
             
             break;
 
         }
 
+        //imprime o menu de emprestimos após cada iteração
         menu_de_emprestimos();
     }
 
 }
+
+
+#endif

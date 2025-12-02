@@ -5,90 +5,96 @@
 #include "./registros/livro.h"
 #include "./registros/usuario.h" 
 #include "./registros/emprestimo.h"
-#include "./funcoes/menu.h"
 
+//importa todas as funções para gerenciamento da biblioteca
 #include "gerenciamento_livros.h"
 #include "gerenciamento_emprestimos.h"
 #include "gerenciamento_usuarios.h"
+#include "gerenciamento_relatorios.h"
+#include "./funcoes/menu.h"
 
 
 int main(){
 
-    //incializa o vetor dinamico de livros
+    //incialização dos vetores dinamicos
     livro *livros;
-    livros = (livro *)calloc(1,sizeof(livro));
-    int total_livros = 0;
-
+    usuario *usuarios;
     emprestimo *emprestimos;
-    emprestimos = (emprestimo *)calloc(1,sizeof(livro));
-
+    
+    livros = (livro *)calloc(1,sizeof(livro));
+    usuarios = (usuario *)calloc(1,sizeof(usuario));
+    emprestimos = (emprestimo *)calloc(1,sizeof(emprestimo));
+    
+    //variaveis para manter contagem dos dados
+    int total_livros = 0;
+    int total_usuarios = 0;
     int total_emprestimos = 0;
     
-    usuario *u;
-    u = (usuario *)calloc(1,sizeof(usuario));
-    int total_usuarios = 0;
-
     int opcao = 0;
     
-    //printa o menu principal
+    //printa o menu principal pela primeira vez
     menu_principal();
     
     while(scanf("%d", &opcao)) {
         
         switch (opcao) {
             case 1:
-                //printa o menu de gerenciamento de livros
+                /*gerenciamento de livros*/
+
+                //printa o menu de livros
                 menu_de_livros();
 
                 //chama a função que vai ler as entradas no menu de livros
                 total_livros = gerenciamento_livros(livros, total_livros);
-            
+                
             break;
             
             case 2:
-                //printa o menu de gerenciamento de usuarios
+                /*gerenciamento de usuarios*/
+
+                //printa o menu de usuarios
                 menu_de_usuarios();
                 
-                total_usuarios = gerenciamento_usuarios(u,total_usuarios);
+                //chama a funcao que vai ler as entradas no menu de usuarios
+                total_usuarios = gerenciamento_usuarios(usuarios, total_usuarios);
 
             break;
             
             case 3:
-            //printa o menu de gerenciamento de emprestimos
+                /*gerenciamento de emprestimos*/
+
+                //printa o menu de emprestimos
                 menu_de_emprestimos();
                 
-                total_emprestimos = gerenciamento_emprestimos(emprestimos, u, livros, total_emprestimos);
+                //chama a funcao que vai ler as entradas no menu de emprestimos
+                total_emprestimos = gerenciamento_emprestimos(emprestimos, usuarios, livros, total_emprestimos, total_livros, total_usuarios);
             
             break;
            
-            
-            /*
             case 4:
+                /*gerenciamento de relatorios*/
+
+                //printa o menu de relatorios
                 menu_de_relatorios();
-                printf("Digite o título do livro: \n");
-                scanf(" %s", titulo_busca);
 
-                pegar_livro(p, atual, titulo_busca);
-            break;
+                //chama a funcao que vai ler as entradas no menu de relatorios
+                gerenciamento_relatorios(emprestimos, usuarios, livros, total_emprestimos, total_livros,total_usuarios);
             
-            case 5:
-                printf("Digite o título do livro: \n");
-                scanf(" %s", titulo_busca);
 
-                devolver_livro(p, atual, titulo_busca);
-            break;
-                */
+            break; 
 
             case 0:
-                //libera a memória alocada e finaliza o programa
+                //libera a memória alocada
+                free(usuarios);
                 free(livros);
                 free(emprestimos);
-                free(u);
+
                 return 0;
 
             break;
         }
-
+        
+        //printa o menu principal após cada iteração
         menu_principal();
 
     }

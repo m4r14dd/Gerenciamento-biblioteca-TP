@@ -1,7 +1,7 @@
-//importa a struct livro da pasta /registros
+//importa a struct livro
 #include "./registros/livro.h"
 
-//importa as funções pra gerenciar os livros
+//importa as funções para gerenciamento dos livros
 #include "./funcoes/livros/adicionar_livro.h"
 #include "./funcoes/livros/buscar_livro.h"
 #include "./funcoes/livros/listar_livros.h"
@@ -12,90 +12,98 @@
 
 #include <stdlib.h>
 
-
-int gerenciamento_livros(livro *p, int total_livros) {
+int gerenciamento_livros(livro *livros, int total_livros) {
 
     int opcao;
 
     while(scanf("%d", &opcao)){ 
 
-        char busca[100]; //string pra caso o programa vá fazer a busca de um livro
-        
-        int busca_id; //int para caso o programa vá fazer uma busca por id
-        
-        int posicao; //int para guardar a posicao de um livro buscado
+        //variaveis para busca nos vetores
+        char busca[100];
+        int busca_id;
+        int posicao; 
         
         switch (opcao) {
             case 1:
                 /*Adicionar novo livro*/
 
-                //chama a função que adiciona um livro no vetor dinamico
-                adicionar_livro(p, total_livros);
+                //adiciona um livro ao vetor de livros
+                adicionar_livro(livros, total_livros);
 
-                //incrementa a contadora de livros totais e aumenta o tamanho do vetor dinâmico
+                //incrementa a contadora de livros e aumenta o espaço alocado pelo vetor de livros
                 total_livros++; 
-                p = (livro *)realloc(p, (total_livros)+1*sizeof(livro));
+                livros = (livro *)realloc(livros, (total_livros + 1) * sizeof(livro));
 
             break;
 
             case 2:
-                /*Buscar livros por título ou autor*/
+                /*Buscar livros*/
                 
-                printf("\n");
+                //lê a string busca 
                 printf("Digite o título do livro ou nome do autor: \n");
                 scanf("%s", busca);
 
-                buscar_livro(p, total_livros, busca);
+                //busca um livro no vetor de livros
+                buscar_livro(livros, total_livros, busca);
 
             break;
             
             case 3:
                 /*listar todos os livros*/
 
-                listar_livros(p, total_livros);
+                //lista todos os livros no vetor
+                listar_livros(livros, total_livros);
                 
             break;
 
             case 4:
                 /*Atualizar dados de um livro*/
-                
+
+                //lê o ID do livro a ser atualizado
                 printf("Informe o ID do livro: \n");
                 scanf("%d", &busca_id);
 
-                posicao = buscar_idl(p, busca_id, total_livros);
-                atualizar_livro(p, posicao);
+                //usa o id do livro para encontrar sua posição no vetor de livros
+                posicao = buscar_idl(livros, busca_id, total_livros);
+
+                //atualiza os dados do livro
+                atualizar_livro(livros, posicao);
 
             break;
 
             case 5:
                 /*Remover um livro*/
 
+                //lê o ID do livro a ser removido do vetor
                 printf("Informe o ID do livro a ser removido: \n"); 
                 scanf("%d", &busca_id);
 
-                posicao = buscar_idl(p, busca_id, total_livros);
+                //usa o ID do livro para encontrar sua posição no vetor de livros
+                posicao = buscar_idl(livros, busca_id, total_livros);
                 
-                remover_livro(p, posicao, total_livros);
-                total_livros--;
-                
-                p = (livro *)realloc(p, (total_livros)+1*sizeof(livro));
+                //remove o livro do vetor de livros
+                remover_livro(livros, posicao, total_livros);
 
+                //decrementa o total de livros armazenados e diminui o espaço alocado no vetor de livros
+                total_livros--;
+                livros = (livro *)realloc(livros, (total_livros)+1*sizeof(livro));
                 
             break;
 
             case 0:
-                /*
-                Retorna ao menu principal
-                e retorna a contadora de livros pra o programa principal
-                */
-               
+                /*Retorna para o menu principal*/    
+
+                //limpa o terminal antes de retornar ao menu principal
+                limpar_tela();
+
+                //Retorna o novo total de livros para o main.c
                 return total_livros;
 
             break;
 
         }
 
-        //printa o menu de opções de gerenciamento de livros
+        //printa o menu de opções de gerenciamento de livros após cada iteração
         menu_de_livros();
 
     }

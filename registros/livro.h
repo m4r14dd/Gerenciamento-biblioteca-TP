@@ -10,7 +10,7 @@ typedef struct {
     char titulo[100];
     char autor[100];
     int publicacao;
-    bool disponivel; //1 = disponivel 0 = indisponivel
+    int disponivel; //1 = disponivel 0 = indisponivel
 
 } livro;
 

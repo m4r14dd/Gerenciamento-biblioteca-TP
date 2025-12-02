@@ -1,0 +1,74 @@
+#ifndef EMPRESTIMOS_USUARIO_H
+#define EMPRESTIMOS_UUARIO_H
+
+
+//importa a struct emprestimo
+#include "../../registros/emprestimo.h"
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int emprestimos_livro(emprestimo *emprestimos, int total_emprestimos, int total_usuarios) {
+
+    /*
+    Encontra o livro com maior número de emprestios 
+    */
+
+    if(total_emprestimos == 0) {
+
+        printf("Não há emprestimos no sistema! \n");
+        return 0;
+
+    }
+
+    int valor_maximo = 0;
+
+    for(int i = 0; i < total_emprestimos; i++) {
+
+        if(emprestimos[i].idLivro > valor_maximo){
+            
+            //encontra o maior ID de usuário com emprestimo ativo
+            valor_maximo = emprestimos[i].idLivro;
+        
+        }
+
+    }
+
+    //vetor dinamico que armazena as frequencias de cada ID no vetor emprestimos
+    int *frequencia;
+    frequencia = (int *)calloc(valor_maximo + 1 , sizeof(int));
+
+    for(int i = 0; i < total_emprestimos; i++){
+
+        //aumenta a contagem de frequencia de emprestimos de um usuario
+        frequencia[emprestimos[i].idLivro]++;
+
+    }
+
+    //variavel para manter contagem da maior frequencia
+    int maior_frequencia = 0;
+    int livro = 0;
+
+    for(int i = 0; i <= valor_maximo; i++) {
+
+        if(frequencia[i] > maior_frequencia) {
+
+            maior_frequencia = frequencia[i];
+            livro = i;
+
+        }
+
+    }
+
+    //libera a memoria alocada pelo vetor frequencia
+    free(frequencia);
+
+    printf("ID do usuario com mais emprestimos: %d \n", livro);
+    return 1;
+
+}
+
+
+#endif
